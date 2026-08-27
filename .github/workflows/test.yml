@@ -1,6 +1,7 @@
 name: Test
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -31,3 +32,20 @@ jobs:
         run: |
           test -s "$RUNNER_TEMP/example.normalized.csv"
           test -s "$RUNNER_TEMP/example.issues.csv"
+
+  released-action-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Create clean fixture
+        run: printf '%s\n' 'sku,title,price' 'A-1,Blue mug,12.00' > "$RUNNER_TEMP/released.csv"
+      - name: Run released Action
+        uses: softpeanut/csv-preflight-action@v1
+        with:
+          path: ${{ runner.temp }}/released.csv
+          normalized_path: ${{ runner.temp }}/released.normalized.csv
+          report_path: ${{ runner.temp }}/released.issues.csv
+      - name: Verify released outputs
+        run: |
+          test -s "$RUNNER_TEMP/released.normalized.csv"
+          test -s "$RUNNER_TEMP/released.issues.csv"
