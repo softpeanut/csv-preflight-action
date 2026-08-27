@@ -1,0 +1,33 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm test
+      - name: Create clean fixture
+        run: printf '%s\n' 'sku,title,price' 'A-1,Blue mug,12.00' > "$RUNNER_TEMP/example.csv"
+      - name: Run the local Action
+        uses: ./
+        with:
+          path: ${{ runner.temp }}/example.csv
+          normalized_path: ${{ runner.temp }}/example.normalized.csv
+          report_path: ${{ runner.temp }}/example.issues.csv
+      - name: Verify Action outputs
+        run: |
+          test -s "$RUNNER_TEMP/example.normalized.csv"
+          test -s "$RUNNER_TEMP/example.issues.csv"

@@ -1,0 +1,36 @@
+name: CSV Preflight
+description: Check one CSV for structural problems without uploading it
+author: softpeanut
+
+inputs:
+  path:
+    description: Path to one UTF-8 CSV file, relative to the workspace or absolute
+    required: true
+  normalized_path:
+    description: Optional normalized CSV output path; defaults to the runner temp directory
+    required: false
+    default: ""
+  report_path:
+    description: Optional issue-report CSV path; defaults to the runner temp directory
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Check CSV
+      shell: bash
+      env:
+        CSV_PREFLIGHT_INPUT: ${{ inputs.path }}
+        CSV_PREFLIGHT_NORMALIZED_PATH: ${{ inputs.normalized_path }}
+        CSV_PREFLIGHT_REPORT_PATH: ${{ inputs.report_path }}
+      run: |
+        normalized_path="${CSV_PREFLIGHT_NORMALIZED_PATH:-${RUNNER_TEMP:?RUNNER_TEMP is required}/csv-preflight.normalized.csv}"
+        report_path="${CSV_PREFLIGHT_REPORT_PATH:-${RUNNER_TEMP:?RUNNER_TEMP is required}/csv-preflight.issues.csv}"
+        node "$GITHUB_ACTION_PATH/cli.mjs" "$CSV_PREFLIGHT_INPUT" \
+          --output "$normalized_path" \
+          --report "$report_path"
+
+branding:
+  icon: check-square
+  color: blue
