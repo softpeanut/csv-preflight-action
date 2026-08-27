@@ -1,5 +1,7 @@
 # CSV Preflight Action
 
+[简体中文](README.zh-CN.md)
+
 Check one UTF-8 CSV for structural problems in GitHub Actions. The composite Action runs entirely
 on the GitHub runner, requires no API key, and has no runtime dependency beyond Node.js 20 or later.
 
