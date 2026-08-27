@@ -76,3 +76,10 @@ artifact 步骤仍属于你的信任边界。不要因为验证器在 Runner 本
 [GitHub Issues](https://github.com/softpeanut/csv-preflight-action/issues)。完整的 SHA 固定、
 失败报告保留和最小权限示例请参阅
 [详细指南](https://softpeanut.github.io/csv-preflight/validate-csv-github-actions.html)。
+
+## 可选的固定范围配置服务
+
+如果你希望由维护者为一个公开仓库或脱敏最小复现配置这条 CSV 工作流，可先阅读
+[USD 99 中文完整条款](https://softpeanut.github.io/csv-preflight/ci-setup-terms-zh-CN.html)。
+公开 Issue 仅用于确认是否适用，不代表预订或付款；双方书面确认范围、交付、付款、取消
+和退款条件之前，不会开始工作或要求付款。
