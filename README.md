@@ -80,6 +80,10 @@ The implementation is dependency-free and MIT licensed. The browser checker, det
 guide, and test fixtures live in the [CSV Preflight project](https://github.com/softpeanut/csv-preflight).
 Use [GitHub Issues](https://github.com/softpeanut/csv-preflight-action/issues) for reproducible bugs.
 
+If the free Action saved you time, an optional Lightning tip can be sent to
+[`softpeanut@stacker.news`](lightning:softpeanut@stacker.news). A tip buys no support, feature,
+service, or import guarantee.
+
 For teams that want this exact workflow configured against one public repository or sanitized
 minimal reproduction, the optional [fixed-scope USD 99 setup terms](https://softpeanut.github.io/csv-preflight/ci-setup-terms.html)
 define the deliverables, exclusions, and payment sequence before any work begins.

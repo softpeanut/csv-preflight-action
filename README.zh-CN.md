@@ -77,6 +77,10 @@ artifact 步骤仍属于你的信任边界。不要因为验证器在 Runner 本
 失败报告保留和最小权限示例请参阅
 [详细指南](https://softpeanut.github.io/csv-preflight/validate-csv-github-actions.html)。
 
+如果这个免费 Action 节省了你的时间，可以选择向
+[`softpeanut@stacker.news`](lightning:softpeanut@stacker.news) 发送 Lightning 小费。小费不购买
+支持、功能、服务或导入保证。
+
 ## 可选的固定范围配置服务
 
 如果你希望由维护者为一个公开仓库或脱敏最小复现配置这条 CSV 工作流，可先阅读
